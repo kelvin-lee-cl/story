@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Story Generator</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>AI Story Generator</h1>
+        <div class="story-form">
+            <div class="form-group">
+                <label for="theme">Theme:</label>
+                <select id="theme">
+                    <option value="adventure">Adventure</option>
+                    <option value="romance">Romance</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="sci-fi">Science Fiction</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="setting">Setting:</label>
+                <input type="text" id="setting" placeholder="e.g., Medieval castle, Space station">
+            </div>
+
+            <div class="form-group">
+                <label for="plot">Plot:</label>
+                <textarea id="plot" placeholder="Brief description of the main plot"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="characters">Characters:</label>
+                <input type="text" id="characters" placeholder="Main character descriptions">
+            </div>
+
+            <div class="form-group">
+                <label for="length">Story Length:</label>
+                <select id="length">
+                    <option value="short">Short</option>
+                    <option value="medium">Medium</option>
+                    <option value="long">Long</option>
+                </select>
+            </div>
+
+            <button onclick="generateStory()">Generate Story</button>
+        </div>
+
+        <div class="story-output">
+            <h2>Your Story</h2>
+            <div id="story-text">
+                <p class="placeholder">Your generated story will appear here...</p>
+            </div>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+
+</html>
