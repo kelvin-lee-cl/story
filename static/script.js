@@ -30,10 +30,26 @@ async function generateStory() {
             })
         });
 
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
-        storyText.innerHTML = data.story.split('\n').map(paragraph =>
-            `<p>${paragraph}</p>`
-        ).join('');
+
+        if (data.error) {
+            storyText.innerHTML = `<p class="error">Error: ${data.error}</p>`;
+            return;
+        }
+
+        if (data.story) {
+            // Split by paragraphs and format properly
+            const formattedStory = data.story.trim().split('\n').filter(p => p.trim()).map(paragraph =>
+                `<p>${paragraph.trim()}</p>`
+            ).join('');
+            storyText.innerHTML = formattedStory;
+        } else {
+            storyText.innerHTML = '<p class="error">No story was generated. Please try again.</p>';
+        }
 
     } catch (error) {
         storyText.innerHTML = '<p class="error">Error generating story. Please try again.</p>';
