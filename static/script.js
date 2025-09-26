@@ -31,6 +31,16 @@ async function generateStory() {
         });
 
         const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.error || 'Failed to generate story');
+        }
+        
+        if (data.error) {
+            storyText.innerHTML = `<p class="error">Error: ${data.error}</p>`;
+            return;
+        }
+
         storyText.innerHTML = data.story.split('\n').map(paragraph =>
             `<p>${paragraph}</p>`
         ).join('');
