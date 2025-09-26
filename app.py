@@ -27,6 +27,15 @@ def home():
 def static_files(filename):
     return send_from_directory('static', filename)
 
+@app.route('/health')
+def health_check():
+    return jsonify({
+        'status': 'healthy',
+        'api': 'chat',
+        'model': 'command-r-08-2024',
+        'cohere_api_key_set': bool(os.getenv('COHERE_API_KEY'))
+    })
+
 @app.route('/generate-story', methods=['POST'])
 def generate_story():
     try:

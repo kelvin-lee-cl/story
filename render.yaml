@@ -3,10 +3,12 @@ services:
     name: story-ai
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --config gunicorn.conf.py
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 30
     envVars:
       - key: PYTHON_VERSION
-        value: 3.12.6
+        value: 3.11.7
       - key: COHERE_API_KEY
         sync: false
