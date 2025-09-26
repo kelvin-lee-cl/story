@@ -1,5 +1,9 @@
 # Story AI - Deployment Guide
 
+## ⚠️ IMPORTANT: Cohere API Update
+This app uses the NEW Cohere Chat API (not the deprecated Generate API). 
+Ensure your deployment uses the latest code from this repository.
+
 ## Quick Deploy Options
 
 ### 1. 🚀 Heroku (Recommended)
@@ -45,6 +49,23 @@ vercel
 # Set environment variable: COHERE_API_KEY
 # Deploy automatically on push
 ```
+
+### 5. 🎨 Render
+```bash
+# Connect Render to your GitHub repo
+# Set environment variable: COHERE_API_KEY
+# Use: gunicorn app:app (or python app.py)
+# Auto-deploy on push
+```
+
+## 🔄 Redeploying After Cohere API Fix
+
+If you're getting "Generate API was removed" errors:
+
+1. **Pull latest code**: `git pull origin master`
+2. **Redeploy** on your platform
+3. **Clear any cached deployments**
+4. **Verify environment variables** are set
 
 ## Environment Variables Required
 
