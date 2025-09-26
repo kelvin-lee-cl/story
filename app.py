@@ -68,5 +68,6 @@ Make it engaging and creative while maintaining a coherent narrative structure."
         return jsonify({'error': f'Failed to generate story: {str(e)}'}), 500
 
 if __name__ == '__main__':
-    print("Starting simple Flask app...")
-    app.run(host='127.0.0.1', port=3000, debug=True)
+    print("Starting Flask app...")
+    port = int(os.environ.get('PORT', 3000))
+    app.run(host='0.0.0.0', port=port, debug=False)
